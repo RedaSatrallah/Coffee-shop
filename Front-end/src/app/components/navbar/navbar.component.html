@@ -20,13 +20,13 @@
 </nav> -->
 <nav class="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
   <!-- Logo -->
-  <div class="w-10 h-12">
+  <div class="w-12 h-16">
     <img src="logo.png" alt="logo" class="w-full h-full object-contain" />
   </div>
 
   <!-- Desktop menu -->
   <div class="hidden  md:flex gap-6 lg:gap-8 ml-auto">
-    <div *ngFor="let item of menuItems" class="hover:text-gray-300  cursor-pointer font-instrument-sans transition">
+    <div *ngFor="let item of menuItems" class="hover:text-peach  cursor-pointer font-instrument-sans transition">
       {{ item }}
     </div>
   </div>
@@ -34,11 +34,11 @@
   <!-- Desktop buttons -->
   <div class="hidden md:flex gap-3 ml-8">
     <button class="px-6 py-2 
- bg-peach text-black rounded-lg hover:bg-white font-instrument-sans  transition">
+ bg-white text-black rounded-lg hover:bg-peach font-instrument-sans  transition">
       Login
     </button>
     <button class="px-4 py-2 h-10
- border border-peach text-white rounded-lg hover:bg-white hover:text-black font-instrument-sans transition">
+ border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition">
       Sign Up
     </button>
   </div>
