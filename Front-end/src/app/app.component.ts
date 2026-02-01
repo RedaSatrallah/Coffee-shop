@@ -7,16 +7,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BestSellersComponent } from './components/best-sellers/best-sellers.component';
 import { ProductSectionComponent } from './components/product-section/product-section.component';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,HeroComponent,
     WhyUsComponent,FooterComponent,
     NavbarComponent,BestSellersComponent,
-    ProductSectionComponent,HowItWorksComponent],
+    ProductSectionComponent,HowItWorksComponent, CommonModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Front-end';
+  
+  
 }
