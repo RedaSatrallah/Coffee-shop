@@ -3,7 +3,7 @@ import Navbar from "../Layouts/Navbar";
 import BestSellers from "./LandingPageComp/BestSellers";
 import HeroSection from "./LandingPageComp/HeroSection";
 import HowItWorks from "./LandingPageComp/HowItWorks";
-import ProdctSection from "./LandingPageComp/ProductSection";
+import ProductSection from "./LandingPageComp/ProductSection";
 import WhyUs from "./LandingPageComp/WhyUs";
 
 export default  function LandingPage(){
@@ -11,7 +11,7 @@ export default  function LandingPage(){
         <Navbar/> 
         <HeroSection/>  
         <BestSellers/> 
-        <ProdctSection/>
+        <ProductSection/>
         <HowItWorks/>
         <WhyUs/>
         <Footer/>
