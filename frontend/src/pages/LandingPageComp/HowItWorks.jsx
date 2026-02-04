@@ -5,7 +5,7 @@ export default function HowItWorks() {
         HOW IT WORKS ?
       </h2>
 
-      <div className="flex flex-col items-center gap-12 md:gap-2 px-6 sm:px-20">
+      <div className="flex flex-col items-center gap-12 md:gap-0 px-6 sm:px-20">
         {/* Top row with Step 1 and Step 3 */}
         <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-8">
           {/* Step 1 */}

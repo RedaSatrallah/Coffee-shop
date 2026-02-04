@@ -27,7 +27,7 @@ export default function ProductSection() {
         <div className="aspect-square bg-brown text-white flex flex-col justify-center items-center text-center px-6">
           <h3 className="text-xl font-serif mb-2">Coffee Machines</h3>
           <p className="text-sm opacity-80 mb-4">Highest Quality Offered</p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded">
+          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
             SHOP NOW
           </button>
         </div>
@@ -45,7 +45,7 @@ export default function ProductSection() {
         <div className="aspect-square bg-brown text-white flex flex-col justify-center items-center text-center px-6">
           <h3 className="text-xl font-serif mb-2">Coffee Beans</h3>
           <p className="text-sm opacity-80 mb-4">Highest Quality Offered</p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded">
+          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
             SHOP NOW
           </button>
         </div>
@@ -65,7 +65,7 @@ export default function ProductSection() {
           <p className="text-sm opacity-80 mb-4">
             Aiming to serve a fresh quality Cup
           </p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded">
+          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
             SHOP NOW
           </button>
         </div>

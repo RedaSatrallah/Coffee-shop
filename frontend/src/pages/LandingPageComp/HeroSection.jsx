@@ -18,10 +18,10 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 h-full flex items-center px-4 sm:px-8 md:px-16 lg:px-24">
         <div className="text-white max-w-xl sm:max-w-2xl">
-          <h1 className="text-4xl md:text-5xl lg:text-5xl font-instrument-serif mb-2 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-instrument-serif mb-2 leading-tight">
             WHERE EVERY BEAN
           </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-5xl font-instrument-serif mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-instrument-serif mb-6 leading-tight">
             TELLS A STORY
           </h1>
           <p className="text-[0.8rem] md:text-[1rem] mb-8 text-gray-200 font-instrument-sans">
