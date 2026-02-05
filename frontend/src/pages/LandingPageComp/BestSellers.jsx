@@ -1,19 +1,10 @@
-import image from "../../assets/Rectangle83.png";
+import productsData from "../../data/products.json";
+
+
 export default function BestSellers() {
-  const products = [
-    {
-      title: "Law Breakers - Espresso Blend",
-      image: image,
-    },
-    {
-      title: "Ethiopia - Amity Brothers",
-      image: image,
-    },
-    {
-      title: "Columbian Brew Coffee",
-      image: image,
-    },
-  ];
+  const bestSellers = productsData.products.filter(
+    (product) => product.isBestSeller
+  );
 
   return (
     <section className="bg-charcoal py-20">
@@ -22,9 +13,9 @@ export default function BestSellers() {
       </h2>
 
       <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-3 px-6">
-        {products.map((product, index) => (
+        {bestSellers.map((product) => (
           <div
-            key={index}
+            key={product.id}
             className="bg-dark-brown rounded-2xl pb-4 text-center shadow-lg"
           >
             <div className="overflow-hidden rounded-t-xl mb-4">
@@ -46,4 +37,6 @@ export default function BestSellers() {
         ))}
       </div>
     </section>
-  );}
+  );
+}
+
