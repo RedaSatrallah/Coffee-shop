@@ -1,14 +1,14 @@
 import Footer from "../Layouts/Footer";
-import Navbar from "../Layouts/Navbar";
+import NavbarC from "../Layouts/NavbarC";
 import BestSellers from "../components/LandingPageComp/BestSellers";
 import HeroSection from "../components/LandingPageComp/HeroSection";
 import HowItWorks from "../components/LandingPageComp/HowItWorks";
 import ProductSection from "../components/LandingPageComp/ProductSection";
 import WhyUs from "../components/LandingPageComp/WhyUs";
 
-export default  function LandingPage(){
+export default  function Home(){
     return<>    
-        <Navbar/> 
+        <NavbarC/> 
         <HeroSection/>  
         <BestSellers/> 
         <ProductSection/>
