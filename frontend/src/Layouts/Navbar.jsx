@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,7 +10,7 @@ export default function Navbar() {
       {/* Logo */}
       <div className="w-12 h-16">
         <img
-          src={logo}
+          src="/assets/logo.png"
           alt="logo"
           className="w-full h-full object-contain"
         />

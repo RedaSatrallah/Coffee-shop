@@ -1,7 +1,3 @@
-import original from "../../assets/original.png";
-import quality from "../../assets/quality-control.png";
-import handshake from "../../assets/handshake.png";
-
 export default function WhyUs() {
   return (
     <section className="bg-white py-20 px-4">
@@ -13,7 +9,7 @@ export default function WhyUs() {
       <div className="flex flex-col md:flex-row justify-center items-center gap-12 max-w-3xl md:max-w-6xl mx-auto">
         
         <div className="flex flex-col items-center text-center w-full">
-          <img src={original} alt="Original" className="w-32 h-32 md:w-40 md:h-40" />
+          <img src="/assets/original.png" alt="Original" className="w-32 h-32 md:w-40 md:h-40" />
           <p className="font-instrument-sans text-sm font-thin max-w-xs mt-5">
             Carefully sourced beans from the world’s finest coffee-growing regions,
             chosen for their unique flavor and character.
@@ -21,14 +17,14 @@ export default function WhyUs() {
         </div>
 
         <div className="flex flex-col items-center text-center w-full">
-          <img src={quality} alt="Quality" className="w-32 h-32 md:w-40 md:h-40" />
+          <img src="/assets/original.png" alt="Quality" className="w-32 h-32 md:w-40 md:h-40" />
           <p className="font-instrument-sans text-sm font-thin max-w-xs mt-5">
             Roasted in small batches to preserve aroma, freshness, and balance in every cup.
           </p>
         </div>
 
         <div className="flex flex-col items-center text-center w-full">
-          <img src={handshake} alt="Trust" className="w-32 h-32 md:w-40 md:h-40" />
+          <img src="/assets/original.png" alt="Trust" className="w-32 h-32 md:w-40 md:h-40" />
           <p className="font-instrument-sans text-sm font-thin max-w-xs mt-5">
             Committed to transparency, consistency, and lasting relationships with growers
             and customers alike.

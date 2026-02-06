@@ -1,7 +1,3 @@
-import beans from "../../assets/coffee-beans.jpg";
-import machine from "../../assets/machine.jpg";
-import powder from "../../assets/coffeepowder.jpg";
-
 export default function ProductSection() {
   return (
     <section className="bg-[#7B553A] py-20">
@@ -14,7 +10,7 @@ export default function ProductSection() {
       <div className="hidden md:grid max-w-4xl mx-auto grid-cols-3 grid-rows-2 gap-0">
         {/* Image 1 */}
         <div className="aspect-square">
-          <img src={beans} alt="Coffee Beans" className="w-full h-full object-cover" />
+          <img src="/assets/coffee-beans.jpg" alt="Coffee Beans" className="w-full h-full object-cover" />
         </div>
 
         {/* Coffee Machines */}
@@ -29,7 +25,7 @@ export default function ProductSection() {
 
         {/* Image 2 */}
         <div className="aspect-square">
-          <img src={powder} alt="CoffeePowder" className="w-full h-full object-cover" />
+          <img src="/assets/coffeepowder.jpg" alt="CoffeePowder" className="w-full h-full object-cover" />
         </div>
 
         {/* Coffee Beans */}
@@ -44,7 +40,7 @@ export default function ProductSection() {
 
         {/* Image 3 */}
         <div className="aspect-square">
-          <img src={machine} alt="machine" className="w-full h-full object-cover" />
+          <img src="/assets/machine.jpg" alt="machine" className="w-full h-full object-cover" />
         </div>
 
         {/* Coffee Powder */}
@@ -65,7 +61,7 @@ export default function ProductSection() {
         {/* Beans Row */}
         <div className="flex w-full gap-0">
           <div className="aspect-square w-1/2">
-            <img src={beans} alt="Coffee Beans" className="w-full h-full object-cover" />
+            <img src="/assets/coffee-beans.jpg" alt="Coffee Beans" className="w-full h-full object-cover" />
           </div>
           <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
             <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">Coffee Beans</h3>
@@ -80,7 +76,7 @@ export default function ProductSection() {
         {/* Machines Row */}
         <div className="flex w-full gap-0">
           <div className="aspect-square w-1/2">
-            <img src={machine} alt="Coffee Machines" className="w-full h-full object-cover" />
+            <img src="/assets/machine.jpg" alt="Coffee Machines" className="w-full h-full object-cover" />
           </div>
           <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
             <h3 className="text-3xl md:text-4xl font-instrument-serif mb-1 font-medium">Coffee Machines</h3>
@@ -95,7 +91,7 @@ export default function ProductSection() {
         {/* Powder Row */}
         <div className="flex w-full gap-0">
           <div className="aspect-square w-1/2">
-            <img src={powder} alt="Coffee Powder" className="w-full h-full object-cover" />
+            <img src="/assets/coffeepowder.jpg" alt="Coffee Powder" className="w-full h-full object-cover" />
           </div>
           <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
             <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">Coffee Powder</h3>
