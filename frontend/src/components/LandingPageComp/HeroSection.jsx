@@ -1,13 +1,9 @@
-
-import backgroundImage from "../../assets/Rectangle83.png";
-
-
 export default function HeroSection() {
   return (
     <section className="relative h-screen">
       {/* Background image */}
       <img
-        src={backgroundImage}
+        src="/assets/Rectangle83.png"
         alt="Coffee background"
         className="absolute inset-0 w-full h-full object-cover"
       />

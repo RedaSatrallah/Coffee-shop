@@ -1,6 +1,4 @@
 import productsData from "../../data/products.json";
-
-
 export default function BestSellers() {
   const bestSellers = productsData.products.filter(
     (product) => product.isBestSeller
