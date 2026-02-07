@@ -1,13 +1,15 @@
 export default function ProductSection() {
   return (
-    <section className="bg-[#7B553A] py-20">
+<section className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
+
+    
       {/* Title */}
-      <h2 className="text-center text-white text-xl md:text-xl tracking-widest mb-12">
+      <h2 className="text-center text-white text-xl md:text-3xl tracking-widest mb-16 mt-0">
         OUR PRODUCTS
       </h2>
 
       {/* Desktop Layout (unchanged) */}
-      <div className="hidden md:grid max-w-4xl mx-auto grid-cols-3 grid-rows-2 gap-0">
+      <div className="hidden md:grid max-w-4xl mx-auto grid-cols-3 grid-rows-2 gap-0 pt-6">
         {/* Image 1 */}
         <div className="aspect-square">
           <img src="/assets/coffee-beans.jpg" alt="Coffee Beans" className="w-full h-full object-cover" />
@@ -55,6 +57,7 @@ export default function ProductSection() {
           </button>
         </div>
       </div>
+
 
       {/* Mobile Layout - glued squares, no gaps */}
       <div className="md:hidden mx-auto w-full max-w-[500px] gap-0">
@@ -105,6 +108,11 @@ export default function ProductSection() {
           </div>
         </div>
       </div>
+
+
+
     </section>
+
+
   );
 }
