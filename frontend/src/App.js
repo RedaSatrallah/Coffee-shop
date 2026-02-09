@@ -1,31 +1,24 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-
-import LandingPage from './pages/LandingPage';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Signup from './components/LandingPageComp/signup';
-import Login from './components/LandingPageComp/login';
-import Home from './pages/Home';
-import ProtectedRoute from './components/Protection/ProtectedRoute';
-
+import PublicRoutes from './router/PublicRoutes';
+//import AuthProvider from './contexts/AuthProvider';
+//import AdminRoutes from './router/AdminRoutes';
+//import ClientRoutes from './router/ClientRoutes';
+//import { CartProvider } from './contexts/CartProvider';
+//import { Toaster } from 'react-hot-toast';
 
 function App() {
-  return (<>
-  <BrowserRouter>
-    <Routes>
-      <Route path='/Signup' element={<Signup />} />
-      <Route path='/Login' element={<Login />} />
-      <Route path="/" element={<LandingPage />} />
-      
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/home" element={<Home />} />
-      </Route>
+  return (
+    <BrowserRouter>{/* Active la navigation sans rechargement de page */}
 
+        <Routes>
+          <Route path="/*" element={<PublicRoutes />} />
+        </Routes>
 
-    </Routes>
-  </BrowserRouter>
-  
-  </>
+    
+      </BrowserRouter>
+
 
   );
 }
