@@ -8,18 +8,13 @@ import PublicRoutes from './router/PublicRoutes';
 //import { Toaster } from 'react-hot-toast';
 
 function App() {
-
   return (
-    <BrowserRouter>{/* Active la navigation sans rechargement de page */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<PublicRoutes />} />
 
-        <Routes>
-          <Route path="/*" element={<PublicRoutes />} />
-        </Routes>
-
-    
-      </BrowserRouter>
-
-
+      </Routes>
+    </BrowserRouter>
   );
 }
 
