@@ -32,7 +32,7 @@ export default function Navbar() {
       {/* Desktop buttons */}
       <div className="hidden md:flex gap-3 ml-8">
         <Link
-          to="/"
+          to="/register"
           className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
         >
           Login
