@@ -4,8 +4,6 @@ import { createContext } from "react";
 const AuthContext = createContext(null); //Il crée un contexte global d’authentification. // null : valeur par défaut (utilisateur non connecté)
 
 
-
-
 export default AuthContext;
 
 
