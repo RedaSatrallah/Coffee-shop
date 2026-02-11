@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "About", "Services", "Contact"];
-
+/*   const menuItems = ["Home", "About", "Services", "Contact"];
+ */
+ const menuItems =[{
+    name:"Our coffee",
+    link: "/coffees"
+  },{
+    name:"About Us",
+    link:"#"
+  },{
+    name:"Subscribe",
+    link:"#"
+  }
+]
   return (
     <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
       {/* Logo */}
@@ -20,10 +31,10 @@ export default function Navbar() {
       <div className="hidden md:flex gap-6 lg:gap-8 ml-auto">
         {menuItems.map((item) => (
           <div
-            key={item}
+            key={item.name}
             className="hover:text-peach cursor-pointer font-instrument-sans transition"
           >
-            {item}
+            <a href={item.link}>{item.name}</a>
           </div>
         ))}
       </div>
