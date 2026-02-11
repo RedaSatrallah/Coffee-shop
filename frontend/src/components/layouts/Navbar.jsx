@@ -31,14 +31,14 @@ export default function Navbar() {
       {/* Desktop buttons */}
       <div className="hidden md:flex gap-3 ml-8">
         <Link
-          to="/register"
+          to="/login"
           className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
         >
           Login
         </Link>
 
         <Link
-          to="/"
+          to="/register"
           className="px-4 py-2 h-10 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
         >
           Sign Up
