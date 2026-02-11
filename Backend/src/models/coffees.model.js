@@ -1,5 +1,3 @@
-
-// src/models/coffee.model.js
 const mongoose = require("mongoose");
 
 const coffeeSchema = new mongoose.Schema(

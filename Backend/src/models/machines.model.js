@@ -1,4 +1,3 @@
-// src/models/machine.model.js
 const mongoose = require("mongoose");
 
 const machineSchema = new mongoose.Schema(

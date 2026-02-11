@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 // Import your controllers (CommonJS style)
 const coffeeController = require("../controllers/coffees.controller");
 
