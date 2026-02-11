@@ -8,13 +8,10 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 //import ResetPasswordPage from "../pages/public/auth/ResetPasswordPage";
 //import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
 import CoffeesPage from "../pages/public/CoffeesPage";
+import ProductCart from "../pages/public/ProductCart";
 
 export default function PublicRoutes() {
     return (
-        <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/coffees" element={<CoffeesPage />} />
-        </Routes>
+     <ProductCart />
     );
 }
