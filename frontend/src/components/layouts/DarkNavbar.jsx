@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function Navbar() {
+
+export default function DarkNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuItems = ["Our coffee", "About Us", "Subscribe"];
 

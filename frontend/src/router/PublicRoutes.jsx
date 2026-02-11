@@ -15,6 +15,8 @@ export default function PublicRoutes() {
             <Route index element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/coffees" element={<CoffeesPage />} />
+            
+
         </Routes>
     );
 }

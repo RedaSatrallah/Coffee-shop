@@ -1,28 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import PublicRoutes from './router/PublicRoutes';
-//import AuthProvider from './contexts/AuthProvider';
-//import AdminRoutes from './router/AdminRoutes';
-//import ClientRoutes from './router/ClientRoutes';
-//import { CartProvider } from './contexts/CartProvider';
-//import { Toaster } from 'react-hot-toast';
-import "@fontsource/instrument-serif";
-import "@fontsource/instrument-sans";
-import "@fontsource/roboto-serif";
+import { BrowserRouter } from 'react-router-dom';
+import { UserDashboard } from './pages/UserDashboard';
 
 function App() {
-
   return (
-    <BrowserRouter>{/* Active la navigation sans rechargement de page */}
-
-        <Routes>
-          <Route path="/*" element={<PublicRoutes />} />
-        </Routes>
-
-    
-      </BrowserRouter>
-
-
+    <BrowserRouter>
+      <UserDashboard />
+    </BrowserRouter>
   );
 }
 
