@@ -9,9 +9,17 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 //import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
 import CoffeesPage from "../pages/public/CoffeesPage";
 import ProductCart from "../pages/public/ProductCart";
+import OrderConfirmed from "../pages/public/OrderConfirmed";
 
 export default function PublicRoutes() {
     return (
-     <ProductCart />
+        <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/coffees" element={<CoffeesPage />} />
+            <Route path="/cart" element={<ProductCart />} />
+            <Route path="Confirmed" element={<OrderConfirmed />} />
+            
+        </Routes>
     );
 }
