@@ -49,7 +49,7 @@ export default function Navbar() {
 
         <Link
           to="/Signup"
-          className="px-4 py-2 h-10 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white font-instrument-sans transition inline-flex items-center justify-center"
+          className="px-4 py-1 h-10 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white font-instrument-sans transition inline-flex items-center justify-center"
         >
           Sign Up
         </Link>
