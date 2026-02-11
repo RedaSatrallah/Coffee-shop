@@ -7,13 +7,14 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 //import ForgotPasswordPage from "../pages/public/auth/ForgotPasswordPage";
 //import ResetPasswordPage from "../pages/public/auth/ResetPasswordPage";
 //import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
-
+import CoffeesPage from "../pages/public/CoffeesPage";
 
 export default function PublicRoutes() {
     return (
         <Routes>
             <Route index element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/coffees" element={<CoffeesPage />} />
         </Routes>
     );
 }

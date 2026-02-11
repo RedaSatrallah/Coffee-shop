@@ -1,7 +1,3 @@
-import logo from "../../assets/images/logo.png";
-import facebook from "../../assets/images/facebook.png";
-import instagram from "../../assets/images/instagram.png";
-
 export default function Footer() {
   return (
     <footer className="bg-brown text-white py-10 px-6 font-instrument-sans">
@@ -11,7 +7,7 @@ export default function Footer() {
 
         {/* Part 1: Logo + text */}
 <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 md:w-1/4">
-  <img src={logo} alt="Brand logo" className="h-16 w-auto md:h-20 opacity-50" />
+  <img src="/assets/logo.png" alt="Brand logo" className="h-16 w-auto md:h-20 opacity-50" />
   <p className="opacity-75 text-sm md:text-sm leading-snug max-w-[200px] md:max-w-[300px]">
     Premium coffee subscriptions, roasted fresh and delivered to your door.
   </p>
@@ -43,8 +39,8 @@ export default function Footer() {
         <div className="flex flex-col gap-2 md:w-1/6">
           <p className="font-robotoSerif font-semibold mb-2">Follow Us:</p>
           <div className="flex gap-4 opacity-75">
-            <img src={facebook} alt="facebook" className="w-10 h-10" />
-            <img src={instagram} alt="instagram" className="w-10 h-10" />
+            <img src="/assets/facebook.png" alt="facebook" className="w-10 h-10" />
+            <img src="/assets/instagram.png" alt="instagram" className="w-10 h-10" />
             
           </div>
           {/* COPYRIGHT */}

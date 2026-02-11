@@ -2,15 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const menuItems = ["Home", "About", "Services", "Contact"];
+  const menuItems = ["Our coffee", "About Us", "Subscribe"];
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
+    <nav className="absolute top-0 left-0 w-full z-50 text-black px-4 sm:px-8 py-2 flex justify-between items-center">
       {/* Logo */}
       <div className="w-12 h-16">
         <img
-          src="/assets/logo.png"
+          src="/assets/logo2.png"
           alt="logo"
           className="w-full h-full object-contain"
         />
@@ -31,19 +30,18 @@ export default function Navbar() {
       {/* Desktop buttons */}
       <div className="hidden md:flex gap-3 ml-8">
         <Link
-          to="/register"
-          className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
+          to="/Login"
+          className="px-6 py-2 bg-brown text-white rounded-lg hover:bg-peach hover:text-brown font-instrument-sans transition inline-flex items-center justify-center"
         >
-          Login
+          Log In
         </Link>
 
         <Link
-          to="/"
-          className="px-4 py-2 h-10 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
+          to="/Signup"
+          className="px-4 py-2 h-10 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white font-instrument-sans transition inline-flex items-center justify-center"
         >
           Sign Up
         </Link>
-
       </div>
 
       {/* Mobile menu button */}
@@ -53,7 +51,7 @@ export default function Navbar() {
           className="focus:outline-none"
         >
           <svg
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-black"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -70,21 +68,28 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-stone-900/80 flex flex-col items-center gap-4 py-4 md:hidden">
+        <div className="absolute top-full left-0 w-full bg-peach-light/95 flex flex-col items-center gap-4 py-4 md:hidden">
           {menuItems.map((item) => (
             <div
               key={item}
-              className="text-white hover:text-gray-300 cursor-pointer transition"
+              className="text-black hover:text-brown cursor-pointer transition"
             >
               {item}
             </div>
           ))}
-          <button className="w-3/4 px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition">
-            Login
-          </button>
-          <button className="w-3/4 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-black transition">
+
+          <Link
+            to="/Login"
+            className="w-3/4 px-4 py-2 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center"
+          >
+            Log In
+          </Link>
+          <Link
+            to="/Signup"
+            className="w-3/4 px-4 py-2 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white transition text-center"
+          >
             Sign Up
-          </button>
+          </Link>
         </div>
       )}
     </nav>

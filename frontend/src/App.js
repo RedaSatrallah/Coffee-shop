@@ -6,6 +6,9 @@ import PublicRoutes from './router/PublicRoutes';
 //import ClientRoutes from './router/ClientRoutes';
 //import { CartProvider } from './contexts/CartProvider';
 //import { Toaster } from 'react-hot-toast';
+import "@fontsource/instrument-serif";
+import "@fontsource/instrument-sans";
+import "@fontsource/roboto-serif";
 
 function App() {
 
