@@ -5,12 +5,14 @@ const path = require("path");
 // GET all coffees
 const getAllCoffees = async (req, res, next) => {
   try {
-    const coffees = await coffeeService.getAllCoffees();
+    const { search = "", sort = "nameAsc" } = req.query;
+    const coffees = await coffeeService.getAllCoffees({ search, sort });
     res.json(coffees);
   } catch (err) {
     next(err);
   }
 };
+
 
 // GET coffee by ID
 const getCoffeeById = async (req, res, next) => {
@@ -25,12 +27,12 @@ const getCoffeeById = async (req, res, next) => {
 // CREATE new coffee
 const createCoffee = async (req, res, next) => {
   try {
-    const image = req.file ? `/uploads/coffees/${req.file.filename}` : null;
+    //const image = req.file ? `/uploads/coffees/${req.file.filename}` : null;
 
     const coffee = await coffeeService.createCoffee({
       ...req.body,
       price: Number(req.body.price),
-      image,
+      images : req.body.images || [],
     });
 
     res.status(201).json(coffee);

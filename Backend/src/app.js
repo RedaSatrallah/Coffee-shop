@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const publicRoutes = require("./routes/public.routes");
+const coffeeRoutes = require( "./routes/coffee.routes.js");
+const machinesRoutes = require( "./routes/machine.routes.js"); 
 //const adminRoutes = require("./routes/admin.routes");
 //const clientRoutes = require("./routes/client.routes");
 const errorHandler = require("./middlewares/error.middleware");
@@ -15,6 +17,9 @@ app.use(express.json());
 app.use("/api/coffees", coffeeRoutes);
 app.use("/api/machines", machinesRoutes);
 app.use("/api", publicRoutes);
+app.use("/api/coffees", coffeeRoutes);
+app.use("/api/machines", machinesRoutes);
+
 //app.use("/api/admin", adminRoutes);
 //app.use("/api/client", clientRoutes);
 //app.use("/uploads", express.static("uploads"));

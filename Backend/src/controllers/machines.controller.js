@@ -2,15 +2,17 @@ const machineService = require("../services/machines.service");
 const fs = require("fs");
 const path = require("path");
 
-// GET all machines
+// GET all machines 
 const getAllMachines = async (req, res, next) => {
   try {
-    const machines = await machineService.getAllMachines();
+    const { search = "", sort = "nameAsc" } = req.query;
+    const machines = await machineService.getAllMachines({ search, sort });
     res.json(machines);
   } catch (err) {
     next(err);
   }
 };
+
 
 // GET machine by ID
 const getMachineById = async (req, res, next) => {
@@ -25,12 +27,12 @@ const getMachineById = async (req, res, next) => {
 // CREATE new machine
 const createMachine = async (req, res, next) => {
   try {
-    const image = req.file ? `/uploads/machines/${req.file.filename}` : null;
+    //const image = req.file ? `/uploads/machines/${req.file.filename}` : null;
 
     const machine = await machineService.createMachine({
       ...req.body,
       price: Number(req.body.price),
-      image,
+      images : req.body.images || [],
     });
 
     res.status(201).json(machine);
@@ -47,6 +49,7 @@ const updateMachine = async (req, res, next) => {
 
     if (!machine) return res.status(404).json({ message: "Produit introuvable" });
 
+    // Supprimer ancienne image si nouvelle uploadée
     if (req.file && machine.image) {
       const oldImagePath = path.join(process.cwd(), machine.image);
       fs.unlink(oldImagePath, (err) => {
@@ -68,6 +71,7 @@ const deleteMachine = async (req, res, next) => {
     const machine = await machineService.getMachineById(req.params.id);
     if (!machine) return res.status(404).json({ message: "Produit introuvable" });
 
+    // Supprimer image si existante
     if (machine.image) {
       const imagePath = path.join(process.cwd(), machine.image);
       fs.unlink(imagePath, (err) => {
@@ -76,7 +80,7 @@ const deleteMachine = async (req, res, next) => {
     }
 
     await machineService.deleteMachine(req.params.id);
-    res.json({ message: "Produit supprimé" });
+    res.json({ message: "machine supprimé" });
   } catch (err) {
     next(err);
   }

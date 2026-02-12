@@ -11,4 +11,4 @@ router.post("/", machineController.createMachine);
 router.put("/:id", machineController.updateMachine);
 router.delete("/:id", machineController.deleteMachine);
 
-module.exports = router;
+module.exports = router; 
