@@ -3,20 +3,13 @@ import { useState } from "react";
 export default function Filters({ onApply }) {
   const [openFilter, setOpenFilter] = useState(null);
 
-<<<<<<< HEAD
-=======
   // Selected values
->>>>>>> amira
   const [filters, setFilters] = useState({
     roastLevel: [],
     tasteProfile: [],
     intensity: [],
     origin: [],
-<<<<<<< HEAD
-    price: [0, 20], // min-max price
-=======
     price: [0, 20], // [minPrice, maxPrice] in dollars
->>>>>>> amira
   });
 
   const toggleFilter = (name) => {
@@ -32,13 +25,6 @@ export default function Filters({ onApply }) {
     }));
   };
 
-<<<<<<< HEAD
-  const handlePriceChange = (newRange) => {
-    setFilters((prev) => ({ ...prev, price: newRange }));
-  };
-
-  const applyFilters = () => {
-=======
   const handlePriceChange = (index, value) => {
     setFilters((prev) => {
       const newPrice = [...prev.price];
@@ -49,16 +35,11 @@ export default function Filters({ onApply }) {
 
   const applyFilters = () => {
     // Create a filter object for backend
->>>>>>> amira
     const adaptedFilters = {
       ...filters,
       intensity: filters.intensity.map(Number),
       price: { $gte: filters.price[0], $lte: filters.price[1] },
     };
-<<<<<<< HEAD
-=======
-
->>>>>>> amira
     console.log("Applied filters:", adaptedFilters);
     onApply?.(adaptedFilters);
   };
@@ -129,11 +110,7 @@ export default function Filters({ onApply }) {
 
       <hr />
 
-<<<<<<< HEAD
-      {/* Price Slider */}
-=======
       {/* Price slider */}
->>>>>>> amira
       <div>
         <button
           onClick={() => toggleFilter("price")}
@@ -147,12 +124,6 @@ export default function Filters({ onApply }) {
             }`}
           />
         </button>
-<<<<<<< HEAD
-
-        {openFilter === "price" && (
-          <PriceSlider value={filters.price} onChange={handlePriceChange} />
-        )}
-=======
 {openFilter === "price" && (
   <div className="px-2 py-2 flex flex-col gap-2">
     {/* Display current min and max */}
@@ -207,7 +178,6 @@ export default function Filters({ onApply }) {
 
 
 
->>>>>>> amira
       </div>
 
       <hr />
@@ -233,11 +203,7 @@ export default function Filters({ onApply }) {
   );
 }
 
-<<<<<<< HEAD
-/* Reusable filter section for checkboxes */
-=======
 /* Reusable section */
->>>>>>> amira
 function FilterSection({ title, isOpen, onToggle, options, values, onChange }) {
   return (
     <div>
@@ -271,46 +237,3 @@ function FilterSection({ title, isOpen, onToggle, options, values, onChange }) {
     </div>
   );
 }
-<<<<<<< HEAD
-
-/* Price slider with min-max */
-function PriceSlider({ value = [0, 20], onChange }) {
-  const [min, max] = value;
-
-  const handleMinChange = (e) => {
-    const newMin = Number(e.target.value);
-    if (newMin <= max) onChange([newMin, max]);
-  };
-
-  const handleMaxChange = (e) => {
-    const newMax = Number(e.target.value);
-    if (newMax >= min) onChange([min, newMax]);
-  };
-
-  return (
-    <div className="px-2 py-2 flex flex-col gap-2">
-      <div className="flex justify-between text-sm">
-        <span>${min}</span>
-        <span>${max}</span>
-      </div>
-      <input
-        type="range"
-        min="0"
-        max="20"
-        value={min}
-        onChange={handleMinChange}
-        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-      />
-      <input
-        type="range"
-        min="0"
-        max="20"
-        value={max}
-        onChange={handleMaxChange}
-        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-      />
-    </div>
-  );
-}
-=======
->>>>>>> amira
