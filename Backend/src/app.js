@@ -8,4 +8,5 @@ app.use(express.json());
 app.use("/api/coffees", coffeeRoutes);
 app.use("/api/machines", machinesRoutes);
 
+
 export default app;
