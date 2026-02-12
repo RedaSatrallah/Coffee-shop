@@ -6,8 +6,6 @@ const machinesRoutes = require( "./routes/machine.routes.js");
 //const adminRoutes = require("./routes/admin.routes");
 //const clientRoutes = require("./routes/client.routes");
 const errorHandler = require("./middlewares/error.middleware");
-const coffeeRoutes = require( "./routes/coffee.routes.js"); 
-const machinesRoutes = require( "./routes/machine.routes.js"); 
 
 const app = express();
 app.use(cors());
@@ -15,9 +13,7 @@ app.use(cors());
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 app.use("/api/coffees", coffeeRoutes);
-app.use("/api/machines", machinesRoutes);
 app.use("/api", publicRoutes);
-app.use("/api/coffees", coffeeRoutes);
 app.use("/api/machines", machinesRoutes);
 
 //app.use("/api/admin", adminRoutes);

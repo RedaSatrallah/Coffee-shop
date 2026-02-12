@@ -3,12 +3,20 @@ import { useState } from "react";
 export default function Filters({ onApply }) {
   const [openFilter, setOpenFilter] = useState(null);
 
+<<<<<<< HEAD
+=======
+  // Selected values
+>>>>>>> amira
   const [filters, setFilters] = useState({
     roastLevel: [],
     tasteProfile: [],
     intensity: [],
     origin: [],
+<<<<<<< HEAD
     price: [0, 20], // min-max price
+=======
+    price: [0, 20], // [minPrice, maxPrice] in dollars
+>>>>>>> amira
   });
 
   const toggleFilter = (name) => {
@@ -24,16 +32,33 @@ export default function Filters({ onApply }) {
     }));
   };
 
+<<<<<<< HEAD
   const handlePriceChange = (newRange) => {
     setFilters((prev) => ({ ...prev, price: newRange }));
   };
 
   const applyFilters = () => {
+=======
+  const handlePriceChange = (index, value) => {
+    setFilters((prev) => {
+      const newPrice = [...prev.price];
+      newPrice[index] = Number(value);
+      return { ...prev, price: newPrice };
+    });
+  };
+
+  const applyFilters = () => {
+    // Create a filter object for backend
+>>>>>>> amira
     const adaptedFilters = {
       ...filters,
       intensity: filters.intensity.map(Number),
       price: { $gte: filters.price[0], $lte: filters.price[1] },
     };
+<<<<<<< HEAD
+=======
+
+>>>>>>> amira
     console.log("Applied filters:", adaptedFilters);
     onApply?.(adaptedFilters);
   };
@@ -104,7 +129,11 @@ export default function Filters({ onApply }) {
 
       <hr />
 
+<<<<<<< HEAD
       {/* Price Slider */}
+=======
+      {/* Price slider */}
+>>>>>>> amira
       <div>
         <button
           onClick={() => toggleFilter("price")}
@@ -118,10 +147,67 @@ export default function Filters({ onApply }) {
             }`}
           />
         </button>
+<<<<<<< HEAD
 
         {openFilter === "price" && (
           <PriceSlider value={filters.price} onChange={handlePriceChange} />
         )}
+=======
+{openFilter === "price" && (
+  <div className="px-2 py-2 flex flex-col gap-2">
+    {/* Display current min and max */}
+    <div className="flex justify-between text-sm mb-2">
+      <span>${filters.price[0]}</span>
+      <span>${filters.price[1]}</span>
+    </div>
+
+    {/* Slider track */}
+    <div className="relative h-2 w-full bg-gray-300 rounded">
+      {/* Selected range highlight */}
+      <div
+        className="absolute h-2 bg-black rounded"
+        style={{
+          left: `${(filters.price[0] / 100) * 100}%`,
+          width: `${((filters.price[1] - filters.price[0]) / 100) * 100}%`,
+        }}
+      ></div>
+
+      {/* Min thumb */}
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={filters.price[0]}
+        onChange={(e) =>
+          setFilters((prev) => ({
+            ...prev,
+            price: [Math.min(Number(e.target.value), prev.price[1]), prev.price[1]],
+          }))
+        }
+        className="absolute w-full h-2 bg-transparent pointer-events-auto appearance-none"
+      />
+
+      {/* Max thumb */}
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={filters.price[1]}
+        onChange={(e) =>
+          setFilters((prev) => ({
+            ...prev,
+            price: [prev.price[0], Math.max(Number(e.target.value), prev.price[0])],
+          }))
+        }
+        className="absolute w-full h-2 bg-transparent pointer-events-auto appearance-none"
+      />
+    </div>
+  </div>
+)}
+
+
+
+>>>>>>> amira
       </div>
 
       <hr />
@@ -147,7 +233,11 @@ export default function Filters({ onApply }) {
   );
 }
 
+<<<<<<< HEAD
 /* Reusable filter section for checkboxes */
+=======
+/* Reusable section */
+>>>>>>> amira
 function FilterSection({ title, isOpen, onToggle, options, values, onChange }) {
   return (
     <div>
@@ -181,6 +271,7 @@ function FilterSection({ title, isOpen, onToggle, options, values, onChange }) {
     </div>
   );
 }
+<<<<<<< HEAD
 
 /* Price slider with min-max */
 function PriceSlider({ value = [0, 20], onChange }) {
@@ -221,3 +312,5 @@ function PriceSlider({ value = [0, 20], onChange }) {
     </div>
   );
 }
+=======
+>>>>>>> amira
