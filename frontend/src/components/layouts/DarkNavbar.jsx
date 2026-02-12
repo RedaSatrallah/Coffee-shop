@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import Our_Coffee from "../../pages/public/CoffeesPage"
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,12 +15,6 @@ export default function Navbar() {
     link:"#"
   }
 ]
-=======
-export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const menuItems = ["Our coffee", "About Us", "Subscribe"];
-
->>>>>>> amira
   return (
     <nav className="absolute top-0 left-0 w-full z-50 text-black px-4 sm:px-8 py-2 flex justify-between items-center">
       {/* Logo */}
@@ -37,17 +30,10 @@ export default function Navbar() {
       <div className="hidden md:flex gap-6 lg:gap-8 ml-auto">
         {menuItems.map((item) => (
           <div
-<<<<<<< HEAD
             key={item.name}
             className="hover:text-peach cursor-pointer font-instrument-sans transition"
           >
             <a href={item.link}>{item.name}</a>
-=======
-            key={item}
-            className="hover:text-peach cursor-pointer font-instrument-sans transition"
-          >
-            {item}
->>>>>>> amira
           </div>
         ))}
       </div>
@@ -63,11 +49,7 @@ export default function Navbar() {
 
         <Link
           to="/Signup"
-<<<<<<< HEAD
-          className="px-4 py-1 h-10 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white font-instrument-sans transition inline-flex items-center justify-center"
-=======
           className="px-4 py-2 h-10 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white font-instrument-sans transition inline-flex items-center justify-center"
->>>>>>> amira
         >
           Sign Up
         </Link>

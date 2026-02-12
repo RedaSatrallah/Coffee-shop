@@ -8,7 +8,6 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 //import ForgotPasswordPage from "../pages/public/auth/ForgotPasswordPage";
 //import ResetPasswordPage from "../pages/public/auth/ResetPasswordPage";
 //import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
-import CoffeesPage from "../pages/public/CoffeesPage";
 import ClientRoutes from "./ClientRoutes";
 
 export default function PublicRoutes() {
