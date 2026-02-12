@@ -46,7 +46,7 @@ export default function LoginPage() {
         <div className="min-h-screen bg-peach-light text-brown font-sans overflow-hidden">
             <header className="h-16 flex items-center items-stretch justify-between px-7 max-[980px]:px-4 py-10">
                 <div className="flex items-center gap-1 min-w-[180px]">
-                    <div className="w-35 h-16 flex items-center justify-center" aria-hidden="true">
+                    <div onClick={()=>navigate('/')} className="w-35 h-16 flex items-center justify-center cursor-pointer" aria-hidden="true">
                         <img src="/assets/logo2.png" alt="Logo" className="w-full h-full object-contain" />
                     </div>
                 </div>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 export default function DarkNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   /* const menuItems = ["Our coffee", "About Us", "Subscribe"]; */
+     const navigate = useNavigate();
   const menuItems =[{
     name:"Our coffee",
     link: "/coffees"
@@ -18,7 +19,7 @@ export default function DarkNavbar() {
   return (
     <nav className="absolute top-0 left-0 w-full z-50 text-black px-4 sm:px-8 py-2 flex justify-between items-center">
       {/* Logo */}
-      <div className="w-12 h-16">
+      <div onClick={()=>navigate('/')} className="w-12 h-16 cursor-pointer ">
         <img
           src="/assets/logo2.png"
           alt="logo"
