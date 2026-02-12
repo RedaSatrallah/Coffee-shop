@@ -18,6 +18,7 @@ export default function PublicRoutes() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/coffees" element={<CoffeesPage />} />
             
+
         </Routes>
     );
 }

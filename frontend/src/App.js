@@ -1,3 +1,5 @@
+
+import { UserDashboard } from './pages/UserDashboard';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import PublicRoutes from "./router/PublicRoutes";
@@ -13,6 +15,7 @@ import "@fontsource/roboto-serif";
 function App() {
   return (
     <BrowserRouter>
+      <UserDashboard />
       {/* Active la navigation sans rechargement de page */}
       <AuthProvider>
         <Routes>
