@@ -1,23 +1,36 @@
 const coffeeService = require("../services/coffees.service");
+const Coffee = require("../models/coffees.model");
 const fs = require("fs");
 const path = require("path");
 
 // GET all coffees
-const getAllCoffees = async (req, res, next) => {
+const getAllCoffees = async (req, res) => {
   try {
-    const { search = "", sort = "nameAsc" } = req.query;
-    const coffees = await coffeeService.getAllCoffees({ search, sort });
-    res.json(coffees);
+    const coffees = await Coffee.find();
+
+    // Build full image URLs for frontend
+   const coffeesWithFullImages = coffees.map(coffee => ({
+  ...coffee._doc,
+  images: coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`)
+}));
+res.json(coffeesWithFullImages);
+
   } catch (err) {
-    next(err);
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
 };
-
 
 // GET coffee by ID
 const getCoffeeById = async (req, res, next) => {
   try {
     const coffee = await coffeeService.getCoffeeById(req.params.id);
+
+    if (!coffee) return res.status(404).json({ message: "Coffee not found" });
+
+    // Build full image URLs
+    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
+
     res.json(coffee);
   } catch (err) {
     next(err);
@@ -27,41 +40,68 @@ const getCoffeeById = async (req, res, next) => {
 // CREATE new coffee
 const createCoffee = async (req, res, next) => {
   try {
-    //const image = req.file ? `/uploads/coffees/${req.file.filename}` : null;
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
 
-    const coffee = await coffeeService.createCoffee({
-      ...req.body,
+    const data = {
+      name: req.body.name,
+      description: req.body.description,
+      origin: req.body.origin,
+      roastLevel: req.body.roastLevel,
+      intensity: Number(req.body.intensity),
       price: Number(req.body.price),
-      images : req.body.images || [],
-    });
+      stock: Number(req.body.stock),
+      tasteProfile: req.body.tasteProfile
+        ? req.body.tasteProfile.split(",").map(s => s.trim())
+        : [],
+      images: req.file ? [req.file.filename] : [],
+    };
+
+    const coffee = await coffeeService.createCoffee(data);
+
+    // Return full URLs
+    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
 
     res.status(201).json(coffee);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
 // UPDATE coffee
 const updateCoffee = async (req, res, next) => {
   try {
-    const data = { ...req.body, price: Number(req.body.price) };
-    const coffee = await coffeeService.getCoffeeById(req.params.id);
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
 
-    if (!coffee) return res.status(404).json({ message: "Produit introuvable" });
+    const data = {
+      name: req.body.name,
+      description: req.body.description,
+      origin: req.body.origin,
+      roastLevel: req.body.roastLevel,
+      intensity: Number(req.body.intensity),
+      price: Number(req.body.price),
+      stock: Number(req.body.stock),
+      tasteProfile: req.body.tasteProfile
+        ? req.body.tasteProfile.split(",").map(s => s.trim())
+        : [],
+    };
 
-    // Supprimer ancienne image si nouvelle uploadée
-    if (req.file && coffee.image) {
-      const oldImagePath = path.join(process.cwd(), coffee.image);
-      fs.unlink(oldImagePath, (err) => {
-        if (err) console.warn("Impossible de supprimer l'ancienne image :", err.message);
-      });
-      data.image = `/uploads/coffees/${req.file.filename}`;
+    // Replace image if a new one is uploaded
+    if (req.file) {
+      data.images = [req.file.filename];
     }
 
-    const updatedCoffee = await coffeeService.updateCoffee(req.params.id, data);
-    res.json(updatedCoffee);
-  } catch (err) {
-    next(err);
+    const coffee = await coffeeService.updateCoffee(req.params.id, data);
+
+    if (!coffee) return res.status(404).json({ message: "Coffee not found" });
+
+    // Build full image URLs
+    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
+
+    res.json(coffee);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -71,11 +111,13 @@ const deleteCoffee = async (req, res, next) => {
     const coffee = await coffeeService.getCoffeeById(req.params.id);
     if (!coffee) return res.status(404).json({ message: "Produit introuvable" });
 
-    // Supprimer image si existante
-    if (coffee.image) {
-      const imagePath = path.join(process.cwd(), coffee.image);
-      fs.unlink(imagePath, (err) => {
-        if (err) console.warn("Impossible de supprimer l'image :", err.message);
+    // Delete all images if exist
+    if (coffee.images?.length) {
+      coffee.images.forEach(img => {
+        const imagePath = path.join(process.cwd(), "uploads/coffees", img);
+        fs.unlink(imagePath, err => {
+          if (err) console.warn("Impossible de supprimer l'image :", err.message);
+        });
       });
     }
 

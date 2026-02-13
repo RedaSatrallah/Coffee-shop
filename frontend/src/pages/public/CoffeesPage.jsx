@@ -10,21 +10,22 @@ export default function Coffeespage() {
   const [loading, setLoading] = useState(false);
 
   // Fetch coffees from backend
-  useEffect(() => {
-    const fetchCoffees = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch("http://localhost:3001/api/coffees");
-        const data = await res.json();
-        setCoffees(data);
-      } catch (error) {
-        console.error("Error fetching coffees:", error);
-      }
-      setLoading(false);
-    };
+useEffect(() => {
+  const fetchCoffees = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/coffees`); // minuscules
+      const data = await res.json();
+      setCoffees(data);
+    } catch (error) {
+      console.error("Error fetching coffees:", error);
+    }
+    setLoading(false);
+  };
 
-    fetchCoffees();
-  }, []);
+  fetchCoffees();
+}, []);
+
 
   // Handle applying filters
   const handleApplyFilters = (filters) => {
