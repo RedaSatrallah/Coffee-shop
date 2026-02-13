@@ -56,12 +56,12 @@ export default function Filters({ onApply }) {
   };
 
   return (
-    <div className="w-[260px] p-4 bg-white ml-10 rounded-md flex flex-col gap-2">
+    <div className="shadow-md lg:w-[500px] md:w-[400px] h-fit p-4 bg-white ml-10 rounded-md flex flex-col gap-2">
 
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex gap-2 items-center">
-          <img src="/assets/filter.png" className="w-5 h-5 ml-2" />
+          <img src="/assets/filter.png" className="w-5 h-5" />
           <p className="font-semibold text-sm">Filter</p>
         </div>
         <button
@@ -136,28 +136,14 @@ export default function Filters({ onApply }) {
     <div className="relative h-2 w-full bg-gray-300 rounded">
       {/* Selected range highlight */}
       <div
-        className="absolute h-2 bg-black rounded"
+        className="absolute h-2 bg-brown rounded"
         style={{
           left: `${(filters.price[0] / 100) * 100}%`,
           width: `${((filters.price[1] - filters.price[0]) / 100) * 100}%`,
         }}
       ></div>
 
-      {/* Min thumb */}
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={filters.price[0]}
-        onChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
-            price: [Math.min(Number(e.target.value), prev.price[1]), prev.price[1]],
-          }))
-        }
-        className="absolute w-full h-2 bg-transparent pointer-events-auto appearance-none"
-      />
-
+     
       {/* Max thumb */}
       <input
         type="range"
@@ -195,7 +181,7 @@ export default function Filters({ onApply }) {
       {/* Apply button */}
       <button
         onClick={applyFilters}
-        className="mt-4 bg-black text-white text-sm py-2 rounded-md hover:bg-gray-800 transition"
+        className="mt-4 bg-brown text-white text-sm py-2 rounded-md hover:bg-peach hover:text-black hover: transition"
       >
         Apply filters
       </button>

@@ -131,7 +131,8 @@ export default function HomePage() {
 
       {/* Product Section */}
 
-     <div className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
+
+     <section className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
 
     
       {/* Title */}
@@ -242,7 +243,7 @@ export default function HomePage() {
 
 
 
-    </div>
+    </section>
       {/* HowItWorks */}
 
       <div className="bg-peach pt-[280px] pb-[100px]">
