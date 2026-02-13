@@ -131,6 +131,7 @@ export default function HomePage() {
 
       {/* Product Section */}
 
+
      <section className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
 
     
