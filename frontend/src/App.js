@@ -15,7 +15,7 @@ import "@fontsource/roboto-serif";
 function App() {
   return (
     <BrowserRouter>
-      <UserDashboard />
+      
       {/* Active la navigation sans rechargement de page */}
       <AuthProvider>
         <Routes>

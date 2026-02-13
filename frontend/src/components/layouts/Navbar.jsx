@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
 /*   const menuItems = ["Home", "About", "Services", "Contact"];
  */
@@ -19,8 +21,8 @@ export default function Navbar() {
   return (
     <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
       {/* Logo */}
-      <div className="w-12 h-16">
-        <img
+      <div onClick={()=>navigate('/')} className="w-12 h-16 cursor-pointer">
+        <img 
           src="/assets/logo.png"
           alt="logo"
           className="w-full h-full object-contain"
