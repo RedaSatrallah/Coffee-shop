@@ -1,22 +1,20 @@
-//import ProductCard from "../../components/common/ProductCard";
-//import SearchBar from "../../components/ui/SearchBar";
-import MainLayout from "../../components/layouts/MainLayout";
-//import useHomeService from "../../hooks/useHomeService";
-
+import NavbarC from "./NavbarC";
+import Footer from "./Footer";
+import { useNavigate } from "react-router-dom"; 
 import productsData from "../../components/data/products.json";
-import { useNavigate } from "react-router-dom";
+
+export default function ClientLayout() {
+    const bestSellers = productsData.products.filter(
+        (product) => product.isBestSeller,
+      );
+      const navigate = useNavigate();
+    return (
+        <div className="min-h-screen flex flex-col">
+            <NavbarC />
 
 
-export default function HomePage() {
-  const bestSellers = productsData.products.filter(
-    (product) => product.isBestSeller,
-  );
-  const navigate = useNavigate();
 
-  return (
-    <MainLayout>
-      {/* Section Hero */}
-      <section className="relative h-screen">
+            <section className="relative h-screen">
         {/* Background image */}
         <img
           src="/assets/Rectangle83.png"
@@ -131,119 +129,158 @@ export default function HomePage() {
 
       {/* Product Section */}
 
+      <div className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
+        {/* Title */}
+        <h2 className="text-center text-white text-xl md:text-3xl tracking-widest mb-16 mt-0">
+          OUR PRODUCTS
+        </h2>
 
-     <section className="bg-dark-brown pt-16 pb-[200px] mb-[-220px] relative clip-triangle">
-
-    
-      {/* Title */}
-      <h2 className="text-center text-white text-xl md:text-3xl tracking-widest mb-16 mt-0">
-        OUR PRODUCTS
-      </h2>
-
-      {/* Desktop Layout (unchanged) */}
-      <div className="hidden md:grid max-w-4xl mx-auto grid-cols-3 grid-rows-2 gap-0 pt-6">
-        {/* Image 1 */}
-        <div className="aspect-square">
-          <img src="/assets/coffee-beans.jpg" alt="Coffee Beans" className="w-full h-full object-cover" />
-        </div>
-
-        {/* Coffee Machines */}
-        <div className="aspect-square border-b-2 border-peach md:border-none bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-          <h3 className="text-4xl font-instrument-serif mb-1 font-medium">Coffee Machines</h3>
-          <hr className="w-20 mb-6"></hr>
-          <p className="text-sm font-instrument-sans opacity-80 mb-4">Highest Quality Offered</p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
-            SHOP NOW
-          </button>
-        </div>
-
-        {/* Image 2 */}
-        <div className="aspect-square">
-          <img src="/assets/coffeepowder.jpg" alt="CoffeePowder" className="w-full h-full object-cover" />
-        </div>
-
-        {/* Coffee Beans */}
-        <div className="aspect-square border-2 border-x-0 border-t-0 border-peach md:border-none bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-          <h3 className="text-4xl font-instrument-serif mb-1">Coffee Beans</h3>
-          <hr className="w-20 mb-6"></hr>
-          <p className="text-sm font-instrument-sans opacity-80 mb-4">Highest Quality Offered</p>
-          <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
-            SHOP NOW
-          </button>
-        </div>
-
-        {/* Image 3 */}
-        <div className="aspect-square">
-          <img src="/assets/machine.jpg" alt="machine" className="w-full h-full object-cover" />
-        </div>
-
-        {/* Coffee Powder */}
-        <div className="aspect-square bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-          <h3 className="text-4xl font-instrument-serif mb-1">Coffee Powder</h3>
-          <hr className="w-20 mb-6"></hr>
-          <p className="text-sm font-instrument-sans opacity-80 mb-4">
-            Aiming to serve a fresh quality Cup
-          </p>
-          <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
-            SHOP NOW
-          </button>
-        </div>
-      </div>
-
-
-      {/* Mobile Layout - glued squares, no gaps */}
-      <div className="md:hidden mx-auto w-full max-w-[500px] gap-0">
-        {/* Beans Row */}
-        <div className="flex w-full gap-0">
-          <div className="aspect-square w-1/2">
-            <img src="/assets/coffee-beans.jpg" alt="Coffee Beans" className="w-full h-full object-cover" />
+        {/* Desktop Layout (unchanged) */}
+        <div className="hidden md:grid max-w-4xl mx-auto grid-cols-3 grid-rows-2 gap-0 pt-6">
+          {/* Image 1 */}
+          <div className="aspect-square">
+            <img
+              src="/assets/coffee-beans.jpg"
+              alt="Coffee Beans"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-            <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">Coffee Beans</h3>
+
+          {/* Coffee Machines */}
+          <div className="aspect-square border-b-2 border-peach md:border-none bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+            <h3 className="text-4xl font-instrument-serif mb-1 font-medium">
+              Coffee Machines
+            </h3>
             <hr className="w-20 mb-6"></hr>
-            <p className="text-sm font-instrument-sans opacity-80 mb-4">Highest Quality Offered</p>
-            <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+            <p className="text-sm font-instrument-sans opacity-80 mb-4">
+              Highest Quality Offered
+            </p>
+            <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
               SHOP NOW
             </button>
           </div>
-        </div>
 
-        {/* Machines Row */}
-        <div className="flex w-full gap-0">
-          <div className="aspect-square w-1/2">
-            <img src="/assets/machine.jpg" alt="Coffee Machines" className="w-full h-full object-cover" />
+          {/* Image 2 */}
+          <div className="aspect-square">
+            <img
+              src="/assets/coffeepowder.jpg"
+              alt="CoffeePowder"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-            <h3 className="text-3xl md:text-4xl font-instrument-serif mb-1 font-medium">Coffee Machines</h3>
+
+          {/* Coffee Beans */}
+          <div className="aspect-square border-2 border-x-0 border-t-0 border-peach md:border-none bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+            <h3 className="text-4xl font-instrument-serif mb-1">
+              Coffee Beans
+            </h3>
             <hr className="w-20 mb-6"></hr>
-            <p className="text-sm font-instrument-sans opacity-80 mb-4 tracking-[0.9px]">Highest Quality Offered</p>
+            <p className="text-sm font-instrument-sans opacity-80 mb-4">
+              Highest Quality Offered
+            </p>
+            <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+              SHOP NOW
+            </button>
+          </div>
+
+          {/* Image 3 */}
+          <div className="aspect-square">
+            <img
+              src="/assets/machine.jpg"
+              alt="machine"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Coffee Powder */}
+          <div className="aspect-square bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+            <h3 className="text-4xl font-instrument-serif mb-1">
+              Coffee Powder
+            </h3>
+            <hr className="w-20 mb-6"></hr>
+            <p className="text-sm font-instrument-sans opacity-80 mb-4">
+              Aiming to serve a fresh quality Cup
+            </p>
             <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
               SHOP NOW
             </button>
           </div>
         </div>
 
-        {/* Powder Row */}
-        <div className="flex w-full gap-0">
-          <div className="aspect-square w-1/2">
-            <img src="/assets/coffeepowder.jpg" alt="Coffee Powder" className="w-full h-full object-cover" />
+        {/* Mobile Layout - glued squares, no gaps */}
+        <div className="md:hidden mx-auto w-full max-w-[500px] gap-0">
+          {/* Beans Row */}
+          <div className="flex w-full gap-0">
+            <div className="aspect-square w-1/2">
+              <img
+                 
+              src="/assets/coffee-beans.jpg"
+              alt="Coffee Beans"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+              <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">
+                Coffee Beans
+              </h3>
+              <hr className="w-20 mb-6"></hr>
+              <p className="text-sm font-instrument-sans opacity-80 mb-4">
+                Highest Quality Offered
+              </p>
+              <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+                SHOP NOW
+              </button>
+            </div>
           </div>
-          <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
-            <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">Coffee Powder</h3>
-            <hr className="w-20 mb-6"></hr>
-            <p className="text-sm font-instrument-sans opacity-80 mb-4">
-              Aiming to serve a fresh quality Cup
-            </p>
-            <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
-              SHOP NOW
-            </button>
+
+          {/* Machines Row */}
+          <div className="flex w-full gap-0">
+            <div className="aspect-square w-1/2">
+              <img
+                src="/assets/machine.jpg"
+                alt="Coffee Machines"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+              <h3 className="text-3xl md:text-4xl font-instrument-serif mb-1 font-medium">
+                Coffee Machines
+              </h3>
+              <hr className="w-20 mb-6"></hr>
+              <p className="text-sm font-instrument-sans opacity-80 mb-4 tracking-[0.9px]">
+                Highest Quality Offered
+              </p>
+              <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+                SHOP NOW
+              </button>
+            </div>
+          </div>
+
+          {/* Powder Row */}
+          <div className="flex w-full gap-0">
+            <div className="aspect-square w-1/2">
+              <img
+                src="/assets/coffeepowder.jpg"
+                alt="Coffee Powder"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-square w-1/2 border-b-2 border-peach bg-brown text-white flex flex-col justify-center items-center text-center px-6">
+              <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">
+                Coffee Powder
+              </h3>
+              <hr className="w-20 mb-6"></hr>
+              <p className="text-sm font-instrument-sans opacity-80 mb-4">
+                Aiming to serve a fresh quality Cup
+              </p>
+              <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+                SHOP NOW
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-
-
-    </section>
       {/* HowItWorks */}
 
       <div className="bg-peach pt-[280px] pb-[100px]">
@@ -343,7 +380,7 @@ export default function HomePage() {
       {/* WhyUs */}
 
       <div className="bg-white py-20 px-4">
-        <h2 className="text-center text-brown text-2xl tracking-widest mb-16 font-semibold">
+        <h2 className="text-center text-brown text-xl tracking-widest mb-16 font-semibold">
           WHY US ?
         </h2>
 
@@ -399,6 +436,12 @@ export default function HomePage() {
           </button>
         </div>
       </div>
-    </MainLayout>
-  );
+
+
+           
+
+
+            <Footer />
+        </div>
+    );
 }

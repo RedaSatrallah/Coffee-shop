@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import publicApi from "../../../api/publicApi";
 
 export default function RegisterPage() {
@@ -11,7 +11,7 @@ export default function RegisterPage() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
+   const navigate = useNavigate();
   {
     /* post   Elles sont envoyées au serveur (Node / Express) */
   }
@@ -50,7 +50,8 @@ export default function RegisterPage() {
       <header className="h-10 flex items-center items-stretch justify-between px-7 max-[980px]:px-4 py-10">
         <div className="flex items-center gap-1 min-w-[180px]">
           <div
-            className="w-35 h-16 flex items-center justify-center"
+          onClick={()=>navigate('/')}
+            className="w-35 h-16 flex items-center justify-center cursor-pointer"
             aria-hidden="true"
           >
             <img

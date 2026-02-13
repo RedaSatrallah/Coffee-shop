@@ -1,15 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
-  const menuItems = ["Home", "About", "Services", "Contact"];
-
+/*   const menuItems = ["Home", "About", "Services", "Contact"];
+ */
+ const menuItems =[{
+    name:"Our coffee",
+    link: "/coffees"
+  },{
+    name:"About Us",
+    link:"#"
+  },{
+    name:"Subscribe",
+    link:"#"
+  }
+]
   return (
     <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
       {/* Logo */}
-      <div className="w-12 h-16">
-        <img
+      <div onClick={()=>navigate('/')} className="w-12 h-16 cursor-pointer">
+        <img 
           src="/assets/logo.png"
           alt="logo"
           className="w-full h-full object-contain"
@@ -20,10 +33,10 @@ export default function Navbar() {
       <div className="hidden md:flex gap-6 lg:gap-8 ml-auto">
         {menuItems.map((item) => (
           <div
-            key={item}
+            key={item.name}
             className="hover:text-peach cursor-pointer font-instrument-sans transition"
           >
-            {item}
+            <a href={item.link}>{item.name}</a>
           </div>
         ))}
       </div>
@@ -31,14 +44,14 @@ export default function Navbar() {
       {/* Desktop buttons */}
       <div className="hidden md:flex gap-3 ml-8">
         <Link
-          to="/register"
+          to="/login"
           className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
         >
           Login
         </Link>
 
         <Link
-          to="/"
+          to="/register"
           className="px-4 py-2 h-10 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
         >
           Sign Up
