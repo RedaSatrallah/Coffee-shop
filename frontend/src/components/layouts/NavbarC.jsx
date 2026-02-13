@@ -25,7 +25,7 @@ export default function NavbarC() {
 
         <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
             {/* Logo */}
-            <div className="w-12 h-16">
+            <div onClick={()=>navigate('/')} className="w-12 h-16 cursor-pointer">
                 <img
                     src="/assets/logo.png"
                     alt="logo"

@@ -167,7 +167,7 @@ export default function HomePage() {
           <h3 className="text-4xl font-instrument-serif mb-1">Coffee Beans</h3>
           <hr className="w-20 mb-6"></hr>
           <p className="text-sm font-instrument-sans opacity-80 mb-4">Highest Quality Offered</p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+          <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
             SHOP NOW
           </button>
         </div>
@@ -184,7 +184,7 @@ export default function HomePage() {
           <p className="text-sm font-instrument-sans opacity-80 mb-4">
             Aiming to serve a fresh quality Cup
           </p>
-          <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+          <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
             SHOP NOW
           </button>
         </div>
@@ -202,7 +202,7 @@ export default function HomePage() {
             <h3 className="text-3xl md:text-4xl  font-instrument-serif mb-1">Coffee Beans</h3>
             <hr className="w-20 mb-6"></hr>
             <p className="text-sm font-instrument-sans opacity-80 mb-4">Highest Quality Offered</p>
-            <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+            <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
               SHOP NOW
             </button>
           </div>
@@ -234,7 +234,7 @@ export default function HomePage() {
             <p className="text-sm font-instrument-sans opacity-80 mb-4">
               Aiming to serve a fresh quality Cup
             </p>
-            <button className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
+            <button onClick={() => navigate("/coffees")} className="bg-white text-black px-4 py-2 text-xs rounded font-medium">
               SHOP NOW
             </button>
           </div>
@@ -343,7 +343,7 @@ export default function HomePage() {
       {/* WhyUs */}
 
       <div className="bg-white py-20 px-4">
-        <h2 className="text-center text-brown text-xl tracking-widest mb-16 font-semibold">
+        <h2 className="text-center text-brown text-2xl tracking-widest mb-16 font-semibold">
           WHY US ?
         </h2>
 
