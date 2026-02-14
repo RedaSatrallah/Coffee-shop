@@ -10,22 +10,21 @@ export default function Coffeespage() {
   const [loading, setLoading] = useState(false);
 
   // Fetch coffees from backend
-useEffect(() => {
-  const fetchCoffees = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/coffees`); // minuscules
-      const data = await res.json();
-      setCoffees(data);
-    } catch (error) {
-      console.error("Error fetching coffees:", error);
-    }
-    setLoading(false);
-  };
+  useEffect(() => {
+    const fetchCoffees = async () => {
+      setLoading(true);
+      try {
+const res = await fetch(`${process.env.REACT_APP_API_URL}/Coffees`);
+        const data = await res.json();
+        setCoffees(data);
+      } catch (error) {
+        console.error("Error fetching coffees:", error);
+      }
+      setLoading(false);
+    };
 
-  fetchCoffees();
-}, []);
-
+    fetchCoffees();
+  }, []);
 
   // Handle applying filters
   const handleApplyFilters = (filters) => {
@@ -64,7 +63,7 @@ useEffect(() => {
           <Filters onApply={handleApplyFilters} />
 
           {/* Coffee Cards */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 md:px-0">
+          <section className="grid grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-0">
             {loading ? (
               <p className="col-span-full text-center">Loading...</p>
             ) : (filteredCoffees.length > 0 ? filteredCoffees : coffees).length > 0 ? (
@@ -76,9 +75,10 @@ useEffect(() => {
             )}
           </section>
         </div>
-      </PeachLayout>
+      
 
       <Footer />
+      </PeachLayout>
     </>
   );
 }

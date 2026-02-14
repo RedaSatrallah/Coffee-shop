@@ -6,13 +6,15 @@ const path = require("path");
 // GET all coffees
 const getAllCoffees = async (req, res) => {
   try {
-    const coffees = await Coffee.find();
+const coffees = await coffeeService.getAllCoffees();
 
     // Build full image URLs for frontend
-   const coffeesWithFullImages = coffees.map(coffee => ({
-  ...coffee._doc,
-  images: coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`)
-}));
+ const coffeesWithFullImages = coffees.map(coffee => ({
+      ...coffee._doc,
+      images: coffee.images.map(
+        img => `http://localhost:5001/uploads/coffees/${path.basename(img)}`
+      ),
+    }));
 res.json(coffeesWithFullImages);
 
   } catch (err) {
@@ -29,7 +31,7 @@ const getCoffeeById = async (req, res, next) => {
     if (!coffee) return res.status(404).json({ message: "Coffee not found" });
 
     // Build full image URLs
-    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
+    coffee.images = coffee.images.map(img => `${img}`);
 
     res.json(coffee);
   } catch (err) {
@@ -60,7 +62,7 @@ const createCoffee = async (req, res, next) => {
     const coffee = await coffeeService.createCoffee(data);
 
     // Return full URLs
-    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
+    coffee.images = coffee.images.map(img => `${img}`);
 
     res.status(201).json(coffee);
   } catch (error) {
@@ -97,7 +99,7 @@ const updateCoffee = async (req, res, next) => {
     if (!coffee) return res.status(404).json({ message: "Coffee not found" });
 
     // Build full image URLs
-    coffee.images = coffee.images.map(img => `http://localhost:5001/uploads/coffees/${img}`);
+    coffee.images = coffee.images.map(img => `${img}`);
 
     res.json(coffee);
   } catch (error) {
@@ -114,7 +116,7 @@ const deleteCoffee = async (req, res, next) => {
     // Delete all images if exist
     if (coffee.images?.length) {
       coffee.images.forEach(img => {
-        const imagePath = path.join(process.cwd(), "uploads/coffees", img);
+        const imagePath = path.join(process.cwd(), "/uploads/coffees", img);
         fs.unlink(imagePath, err => {
           if (err) console.warn("Impossible de supprimer l'image :", err.message);
         });
