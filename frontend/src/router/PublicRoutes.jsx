@@ -8,7 +8,7 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 //import ForgotPasswordPage from "../pages/public/auth/ForgotPasswordPage";
 //import ResetPasswordPage from "../pages/public/auth/ResetPasswordPage";
 //import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
-import CoffeesPage from "../pages/public/CoffeesPage";
+
 import ProductCart from "../pages/public/ProductCart";
 import OrderConfirmed from "../pages/public/OrderConfirmed";
 
@@ -21,9 +21,8 @@ export default function PublicRoutes() {
             <Route path="/coffees" element={<CoffeesPage />} />
             <Route path="/cart" element={<ProductCart />} />
             <Route path="Confirmed" element={<OrderConfirmed />} />
-            
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/coffees" element={<CoffeesPage />} />
+         
             
 
         </Routes>

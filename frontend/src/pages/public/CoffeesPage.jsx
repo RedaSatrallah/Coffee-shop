@@ -14,7 +14,7 @@ export default function Coffeespage() {
     const fetchCoffees = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:3001/api/coffees");
+const res = await fetch(`${process.env.REACT_APP_API_URL}/Coffees`);
         const data = await res.json();
         setCoffees(data);
       } catch (error) {
@@ -63,7 +63,7 @@ export default function Coffeespage() {
           <Filters onApply={handleApplyFilters} />
 
           {/* Coffee Cards */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 md:px-0">
+          <section className="grid grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-0">
             {loading ? (
               <p className="col-span-full text-center">Loading...</p>
             ) : (filteredCoffees.length > 0 ? filteredCoffees : coffees).length > 0 ? (
@@ -75,9 +75,10 @@ export default function Coffeespage() {
             )}
           </section>
         </div>
-      </PeachLayout>
+      
 
       <Footer />
+      </PeachLayout>
     </>
   );
 }
