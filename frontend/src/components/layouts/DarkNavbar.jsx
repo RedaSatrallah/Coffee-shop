@@ -6,9 +6,10 @@ export default function DarkNavbar() {
   /* const menuItems = ["Our coffee", "About Us", "Subscribe"]; */
      const navigate = useNavigate();
   const menuItems =[{
-    name:"Our coffee",
+    name:"Our coffees",
     link: "/coffees"
-  },{
+  },
+  {
     name:"About Us",
     link:"#"
   },{
@@ -28,7 +29,7 @@ export default function DarkNavbar() {
       </div>
 
       {/* Desktop menu */}
-      <div className="hidden md:flex gap-6 lg:gap-8 ml-auto">
+      <div className="hidden md:flex gap-6 lg:gap-8 ml-auto text-brown font-instrument-sans font-normal">
         {menuItems.map((item) => (
           <div
             key={item.name}
@@ -40,7 +41,7 @@ export default function DarkNavbar() {
       </div>
 
       {/* Desktop buttons */}
-      <div className="hidden md:flex gap-3 ml-8">
+      <div className="hidden md:flex gap-3 ml-8 font-instrument-sans font-semibold">
         <Link
           to="/Login"
           className="px-6 py-2 bg-brown text-white rounded-lg hover:bg-peach hover:text-brown font-instrument-sans transition inline-flex items-center justify-center"

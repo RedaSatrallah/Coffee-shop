@@ -10,7 +10,8 @@ export default function Navbar() {
  const menuItems =[{
     name:"Our coffee",
     link: "/coffees"
-  },{
+  },
+  {
     name:"About Us",
     link:"#"
   },{
