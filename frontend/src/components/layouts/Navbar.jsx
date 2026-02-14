@@ -86,18 +86,24 @@ export default function Navbar() {
         <div className="absolute top-full left-0 w-full bg-stone-900/80 flex flex-col items-center gap-4 py-4 md:hidden">
           {menuItems.map((item) => (
             <div
-              key={item}
+              key={item.name}
               className="text-white hover:text-gray-300 cursor-pointer transition"
             >
-              {item}
+              <a href={item.link}>{item.name}</a>
             </div>
           ))}
-          <button className="w-3/4 px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition">
-            Login
-          </button>
-          <button className="w-3/4 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-black transition">
-            Sign Up
-          </button>
+        <Link
+          to="/login"
+          className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
+        >
+          Login
+        </Link>
+        <Link
+          to="/register"
+          className="px-4 py-2 h-10 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
+        >
+          Sign Up
+        </Link>
         </div>
       )}
     </nav>

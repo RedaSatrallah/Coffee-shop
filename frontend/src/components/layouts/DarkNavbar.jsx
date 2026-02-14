@@ -83,10 +83,10 @@ export default function DarkNavbar() {
         <div className="absolute top-full left-0 w-full bg-peach-light/95 flex flex-col items-center gap-4 py-4 md:hidden">
           {menuItems.map((item) => (
             <div
-              key={item}
+              key={item.name}
               className="text-black hover:text-brown cursor-pointer transition"
             >
-              {item}
+             <a href={item.link}>{item.name}</a>
             </div>
           ))}
 
