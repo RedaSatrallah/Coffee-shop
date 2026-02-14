@@ -1,13 +1,25 @@
 const express = require("express");
 const router = express.Router();
-// Import your controllers (CommonJS style)
-const coffeeController = require("../controllers/coffees.controller");
 
-// Define routes
+const coffeeController = require("../controllers/coffees.controller");
+const { uploadCoffeeImage } = require("../middlewares/upload.middleware");
+
 router.get("/", coffeeController.getAllCoffees);
 router.get("/:id", coffeeController.getCoffeeById);
-router.post("/", coffeeController.createCoffee);
-router.put("/:id", coffeeController.updateCoffee);
+
+router.post(
+  "/",
+  uploadCoffeeImage.single("image"),
+  coffeeController.createCoffee
+);
+
+
+router.put(
+  "/:id",
+  uploadCoffeeImage.single("image"),
+  coffeeController.updateCoffee
+);
+
 router.delete("/:id", coffeeController.deleteCoffee);
 
 module.exports = router;

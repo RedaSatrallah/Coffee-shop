@@ -1,7 +1,7 @@
 // src/pages/admin/products/Coffees.jsx
 import { useEffect, useState } from "react";
 
-const API_URL = process.env.REACT_APP_API_URLL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 function StockBadge({ stock }) {
   return stock > 0 ? (
@@ -45,7 +45,7 @@ export default function Coffees() {
     setLoading(true);
     try {
       const r = await fetch(
-        `${API_URL}/api/coffees?search=${encodeURIComponent(search)}&sort=${sort}`
+        `${API_URL}/coffees?search=${encodeURIComponent(search)}&sort=${sort}`
       );
       const data = await r.json().catch(() => []);
       const list = Array.isArray(data) ? data : data.coffees || [];
@@ -82,58 +82,70 @@ export default function Coffees() {
     setOpen(true);
   }
 
-  function openEdit(c) {
-    setEditing(c);
-    setForm({
-      name: c.name || "",
-      description: c.description || "",
-      price: String(c.price ?? ""),
-      stock: String(c.stock ?? ""),
-      origin: c.origin || "",
-      roastLevel: c.roastLevel || "Medium",
-      tasteProfile: Array.isArray(c.tasteProfile) ? c.tasteProfile.join(", ") : "",
-      intensity: Number(c.intensity ?? 3),
-      image: Array.isArray(c.images) && c.images.length ? c.images[0] : "",
-    });
-    setOpen(true);
+function openEdit(c) {
+  setEditing(c);
+  setForm({
+    name: c.name || "",
+    description: c.description || "",
+    price: String(c.price ?? ""),
+    stock: String(c.stock ?? ""),
+    origin: c.origin || "",
+    roastLevel: c.roastLevel || "Medium",
+    tasteProfile: Array.isArray(c.tasteProfile) ? c.tasteProfile.join(", ") : "",
+    intensity: Number(c.intensity ?? 3),
+    // ✅ Keep existing image URL separately for preview, but don't put it in the file input
+    image: null,             // file input will be empty
+    existingImage: c.images?.[0] || "", // store URL for preview or backend fallback
+  });
+  setOpen(true);
+}
+
+
+async function save(e) {
+  e.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("name", form.name.trim());
+  formData.append("description", form.description.trim());
+  formData.append("price", Number(form.price));
+  formData.append("stock", Number(form.stock));
+  formData.append("origin", form.origin.trim());
+  formData.append("roastLevel", form.roastLevel);
+  formData.append(
+    "tasteProfile",
+    form.tasteProfile
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .join(",")
+  );
+  formData.append("intensity", Number(form.intensity));
+
+  // 👇 THIS is what multer reads
+  if (form.image) {
+    formData.append("image", form.image);
   }
 
-  async function save(e) {
-    e.preventDefault();
+  const url = editing
+    ? `${API_URL}/api/coffees/${editing._id}`
+    : `${API_URL}/api/coffees`;
 
-    const payload = {
-      name: form.name.trim(),
-      description: form.description.trim(),
-      price: Number(form.price),
-      stock: Number(form.stock),
-      origin: form.origin.trim(),
-      roastLevel: form.roastLevel,
-      tasteProfile: form.tasteProfile
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean),
-      intensity: Number(form.intensity),
-      images: form.image.trim() ? [form.image.trim()] : [],
-    };
+  const method = editing ? "PUT" : "POST";
 
-    const url = editing
-      ? `${API_URL}/api/coffees/${editing._id}`
-      : `${API_URL}/api/coffees`;
+  const r = await fetch("http://localhost:5001/api/coffees", {
+  method: "POST",
+  body: formData,
+});
 
-    const method = editing ? "PUT" : "POST";
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) return alert(data.message || "Error");
 
-    const r = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  setOpen(false);
+  await load();
+}
 
-    const data = await r.json().catch(() => ({}));
-    if (!r.ok) return alert(data.message || data.error || "Error");
 
-    setOpen(false);
-    await load();
-  }
 
   // ✅ Open styled delete modal
   function askDelete(coffee) {
@@ -146,7 +158,7 @@ export default function Coffees() {
     if (!deleting?._id) return;
     setDeletingLoading(true);
     try {
-      const r = await fetch(`${API_URL}/api/coffees/${deleting._id}`, {
+      const r = await fetch(`${API_URL}/coffees/${deleting._id}`, {
         method: "DELETE",
       });
       const data = await r.json().catch(() => ({}));
@@ -429,13 +441,15 @@ export default function Coffees() {
                 onChange={(e) => setForm((f) => ({ ...f, intensity: e.target.value }))}
                 required
               />
+<input
+  type="file"
+  accept="image/*"
+  onChange={(e) =>
+    setForm((f) => ({ ...f, image: e.target.files[0] }))
+  }
+/>
 
-              <input
-                className="rounded-xl border border-[#E6D8CF] px-3 py-2 outline-none focus:ring-2 focus:ring-[#3B170D]/20"
-                placeholder="Image URL (first image)"
-                value={form.image}
-                onChange={(e) => setForm((f) => ({ ...f, image: e.target.value }))}
-              />
+
 
               <div className="mt-2 flex justify-end gap-2">
                 <button

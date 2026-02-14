@@ -56,7 +56,7 @@ export default function Filters({ onApply }) {
   };
 
   return (
-    <div className="shadow-md lg:w-[500px] md:w-[400px] h-fit p-4 bg-white ml-10 rounded-md flex flex-col gap-2">
+<div className="shadow-md w-[50%] max-w-[700px] h-fit p-4 bg-white ml-10 rounded-md flex flex-col gap-2">
 
       {/* Header */}
       <div className="flex items-center justify-between">
