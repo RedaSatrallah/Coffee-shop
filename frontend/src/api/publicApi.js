@@ -109,25 +109,20 @@ mot de passe
     // Si ton backend ne gère pas de logout, juste supprimer le token côté frontend
     return true;
   },
-  /*
-    getProducts: async () => {
-      const res = await fetch(`${API_BASE_URL}/home`);
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "Erreur lors de la récupération des produits");
-      }
-      return res.json();
-    },
-  
-    getProductDetails: async (id) => {
-      const res = await fetch(`${API_BASE_URL}/product-details/${id}`);
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "Produit non trouvé");
-      }
-      return res.json();
-    }
-  */
+
+  // Get Products
+  getProducts: async () => {
+    return handleResponse(
+      await fetch(`${API_BASE_URL}/home`)
+    );
+  },
+
+  // Get Product Details
+  getProductDetails: async (id) => {
+    return handleResponse(
+      await fetch(`${API_BASE_URL}/product-details/${id}`)
+    );
+  }
 };
 
 export default publicApi;

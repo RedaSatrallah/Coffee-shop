@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/public/HomePage";
 import CoffeesPage from "../pages/public/CoffeesPage";
+import CoffeeDetailPage from "../pages/public/CoffeeDetailPage";
 //import ProductDetailsPage from "../pages/public/ProductDetailsPage";
 //import NotFoundPage from "../pages/public/NotFoundPage";
 import LoginPage from "../pages/public/auth/LoginPage";
@@ -19,12 +20,10 @@ export default function PublicRoutes() {
             <Route index element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/coffees" element={<CoffeesPage />} />
+            <Route path="/product/:id" element={<CoffeeDetailPage />} />
             <Route path="/cart" element={<ProductCart />} />
             <Route path="Confirmed" element={<OrderConfirmed />} />
             <Route path="/login" element={<LoginPage />} />
-         
-            
-
         </Routes>
     );
 }
