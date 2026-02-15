@@ -8,6 +8,8 @@ export default function Coffeespage() {
   const [coffees, setCoffees] = useState([]);
   const [filteredCoffees, setFilteredCoffees] = useState([]);
   const [loading, setLoading] = useState(false);
+    const [sortOption, setSortOption] = useState(""); // new state for sorting
+
 
   useEffect(() => {
     const fetchCoffees = async () => {
@@ -59,8 +61,37 @@ const handleApplyFilters = (filters) => {
 };
 
 
+
+ // Handle sorting
+  const handleSortChange = (e) => {
+    const option = e.target.value;
+    setSortOption(option);
+
+    const sorted = [...filteredCoffees].sort((a, b) => {
+      switch (option) {
+        case "price-low-high":
+          return a.price - b.price;
+        case "price-high-low":
+          return b.price - a.price;
+        case "intensity-low-high":
+          return a.intensity - b.intensity;
+        case "intensity-high-low":
+          return b.intensity - a.intensity;
+        case "name-a-z":
+          return a.name.localeCompare(b.name);
+        case "name-z-a":
+          return b.name.localeCompare(a.name);
+        default:
+          return 0;
+      }
+    });
+
+    setFilteredCoffees(sorted);
+  };
+
   return (
     <PeachLayout>
+      <section>
       <div className="max-w-3xl mx-auto py-10 text-center">
         <h1 className="text-5xl text-brown font-instrument-serif mt-10">Our Coffees</h1>
         <p className="font-instrument-sans text-sm mt-2 italic">
@@ -69,6 +100,27 @@ const handleApplyFilters = (filters) => {
           All our specialty coffee is roasted to order and shipped fresh to your door.
         </p>
       </div>
+
+    <div className="flex justify-end mr-16 mb-4 items-center">
+  <p className="mr-2 font-instrument-sans">Sort By</p>
+  <select
+    value={sortOption}
+    onChange={handleSortChange}
+    className="border border-gray-100 rounded px-3 py-1 text-sm"
+  >
+    <option value="">Default</option>
+    <option value="price-low-high">Price: Low → High</option>
+    <option value="price-high-low">Price: High → Low</option>
+    <option value="intensity-low-high">Intensity: Low → High</option>
+    <option value="intensity-high-low">Intensity: High → Low</option>
+    <option value="name-a-z">Name: A → Z</option>
+    <option value="name-z-a">Name: Z → A</option>
+  </select>
+</div>
+
+</section>
+
+
 
       <div className="flex gap-10 px-10">
         <Filters coffees={coffees} onApply={handleApplyFilters} />
