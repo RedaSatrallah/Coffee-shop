@@ -1,5 +1,7 @@
 // src/services/coffees.service.js
 const Coffee = require("../models/coffees.model");
+const { isValidObjectId } = require("mongoose");
+
 // Get all coffees
 const getAllCoffees = async ({ search = "", sort = "nameAsc" } = {}) => {
   const q = search
@@ -17,7 +19,12 @@ const getAllCoffees = async ({ search = "", sort = "nameAsc" } = {}) => {
 };
 
 // Get one coffee by ID
-const getCoffeeById = (id) => Coffee.findById(id);
+const getCoffeeById = (id) => {
+  if (!id || !isValidObjectId(id)) {
+    throw new Error("Invalid coffee ID");
+  }
+  return Coffee.findById(id);
+};
 
 // Create a coffee
 const createCoffee = (data) => Coffee.create(data);
