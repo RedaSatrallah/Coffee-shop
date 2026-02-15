@@ -41,11 +41,16 @@ const coffeeSchema = new mongoose.Schema(
       required: true
     },
 
+
+    sales: { 
+      type : Number, 
+    },
+
     intensity: {
       type: Number,
       min: 1,
       max: 5
-    },
+    }, 
 
      images: [{ type: String }]
 
