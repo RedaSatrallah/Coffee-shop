@@ -1,8 +1,8 @@
 // src/pages/Checkout.jsx
 import React, { useState } from 'react';
-import DarkNavbar from '../../components/layouts/DarkNavbar';
-import Navbar from '../../components/layouts/Navbar';   
-import Footer from '../../components/layouts/Footer';
+import DarkNavbar from '../../components/common/DarkNavbar';
+ 
+import Footer from '../../components/common/Footer';
 
 function ProductCart() {
   const [cartItems, setCartItems] = useState([

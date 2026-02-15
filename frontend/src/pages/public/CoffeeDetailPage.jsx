@@ -11,7 +11,7 @@ export default function CoffeeDetailPage(){
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('medium');
   const [selectedGrind, setSelectedGrind] = useState('whole-bean');
   const [quantity, setQuantity] = useState(1);
   const [purchaseType, setPurchaseType] = useState('one-time');
@@ -27,10 +27,6 @@ export default function CoffeeDetailPage(){
         const data = await publicApi.getProductDetails(id);
         const productData = data.data || data;
         setProduct(productData);
-        // Set default size
-        if (productData.sizes && productData.sizes.length > 0) {
-          setSelectedSize(productData.sizes[0]);
-        }
       } catch (err) {
         setError(err.message || 'Failed to load product');
         console.error('Error fetching product:', err);
@@ -76,7 +72,7 @@ export default function CoffeeDetailPage(){
             <div>
               <div className="rounded-lg overflow-hidden">
                 <img
-                  src={product.image}
+                  src={product.images?.[0] || '/assets/columbianbrewcoffee.jpg'}
                   alt={product.name}
                   className="w-full h-auto max-h-[250px] md:max-h-[400px] object-cover"
                 />
@@ -101,18 +97,15 @@ export default function CoffeeDetailPage(){
                 </label>
                 <div className="relative">
                   <select
-                    value={selectedSize?.id || ''}
-                    onChange={(e) => setSelectedSize(product.sizes.find(s => s.id === e.target.value))}
+                    value={selectedSize || 'medium'}
+                    onChange={(e) => setSelectedSize(e.target.value)}
                     onClick={() => setIsSizeOpen(!isSizeOpen)}
                     className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-white border border-peach rounded-lg text-xs md:text-sm text-charcoal 
                              focus:outline-none cursor-pointer appearance-none pr-8 md:pr-10"
                   >
-                    
-                    {product.sizes && product.sizes.map(size => (
-                      <option key={size.id} value={size.id}>
-                        {size.name}
-                      </option>
-                    ))}
+                    <option value="small">250g</option>
+                    <option value="medium">500g</option>
+                    <option value="large">1kg</option>
                   </select>
                   <img
                     src="/assets/downarrow.png"
@@ -221,7 +214,7 @@ export default function CoffeeDetailPage(){
 
                     <span className="text-sm text-charcoal font-instrument-sans">Subscribe</span>
                   </div>
-                  <span className="text-sm font-semibold text-charcoal">{product.subscriptionPrice}</span>
+                  <span className="text-sm font-semibold text-charcoal">${(product.price * 0.9).toFixed(2)}</span>
                 </label>
 
                 {/* Delivery Frequency */}
@@ -238,11 +231,10 @@ export default function CoffeeDetailPage(){
                         className="w-full px-3 py-2 bg-white border border-peach-light rounded-lg text-xs md:text-sm text-charcoal 
                                  focus:outline-none focus:border-peach cursor-pointer appearance-none pr-8"
                       >
-                        {product.deliveryOptions && product.deliveryOptions.map(option => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
+                        <option value="1-week">Every week</option>
+                        <option value="2-weeks">Every 2 weeks</option>
+                        <option value="3-weeks">Every 3 weeks</option>
+                        <option value="1-month">Monthly</option>
                       </select>
                       <img
                         src="/assets/downarrow.png"
@@ -289,7 +281,7 @@ export default function CoffeeDetailPage(){
                       <div className="text-center md:text-left flex-shrink-0">
                         <div className="text-xs md:text-sm font-semibold text-brown mb-1">Tasting Notes</div>
                         <div className="text-xs md:text-sm text-grey leading-relaxed">
-                          {product.tastingNotes && product.tastingNotes.join(', ')}
+                          {product.tasteProfile && product.tasteProfile.join(', ')}
                         </div>
                       </div>
                     </div>
@@ -314,8 +306,8 @@ export default function CoffeeDetailPage(){
                       <div className="hidden md:block w-px h-12 bg-brown flex-shrink-0"></div>
                       
                       <div className="text-center md:text-left flex-shrink-0">
-                        <div className="text-xs md:text-sm font-semibold text-brown mb-1">Process :</div>
-                        <div className="text-xs md:text-sm text-grey">{product.process}</div>
+                        <div className="text-xs md:text-sm font-semibold text-brown mb-1">Intensity :</div>
+                        <div className="text-xs md:text-sm text-grey">{'☕'.repeat(product.intensity || 3)} ({product.intensity}/5)</div>
                       </div>
                     </div>
                   </div>

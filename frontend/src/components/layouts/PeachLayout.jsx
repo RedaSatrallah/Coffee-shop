@@ -1,5 +1,5 @@
-import DarkNavbar from "../../components/layouts/DarkNavbar";
-import Footer from "./Footer";
+import DarkNavbar from "../common/DarkNavbar";
+import Footer from "../common/Footer";
 export default function PeachLayout({ children }) {
   return (
     <>

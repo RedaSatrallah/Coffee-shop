@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import "@fontsource/instrument-serif";
 import "@fontsource/instrument-sans";
 import "@fontsource/roboto-serif";
-import Footer from '../../components/layouts/Footer';
+import Footer from '../../components/common/Footer';
 
 function OrderConfirmed() {
   // Sample data - in real app this would come from order confirmation / state / props

@@ -1,7 +1,11 @@
-export default function CoffeeCard({ coffee }) {
-  const imageUrl = coffee.images?.[0] || "/assets/coffee-beans.jpg";
+import { Link } from "react-router-dom";
+import publicApi from "../../api/publicApi"
 
+export default function CoffeeCard({ coffee }) {
+  const imageUrl = coffee.images?.[0] || "/assets/columbianbrewcoffee.jpg";
+  
   return (
+    <Link to={`/product/${coffee._id}`}>
     <div className="border w-fit bg-white rounded-lg flex flex-col gap-2 hover:shadow-lg transition">
       <img
   src={imageUrl}
@@ -23,5 +27,6 @@ export default function CoffeeCard({ coffee }) {
     </div>
     </div>
     </div>
+    </Link>
   );
 }

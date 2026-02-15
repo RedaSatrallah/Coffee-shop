@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CoffeeCard from "../../components/common/CoffeeCard.component";
 import Filters from "../../components/common/Filters.component";
-import Footer from "../../components/layouts/Footer";
+import Footer from "../../components/common/Footer";
 import PeachLayout from "../../components/layouts/PeachLayout";
 
 export default function Coffeespage() {
@@ -77,7 +77,7 @@ const res = await fetch(`${process.env.REACT_APP_API_URL}/Coffees`);
         </div>
       
 
-      <Footer />
+      
       </PeachLayout>
     </>
   );

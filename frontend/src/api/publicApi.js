@@ -120,7 +120,7 @@ mot de passe
   // Get Product Details
   getProductDetails: async (id) => {
     return handleResponse(
-      await fetch(`${API_BASE_URL}/product-details/${id}`)
+      await fetch(`${API_BASE_URL}/coffees/${id}`)
     );
   }
 };
